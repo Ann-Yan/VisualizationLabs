@@ -57,28 +57,29 @@ hm1 = alt.Chart(heatmapP1, title="Heatmap of Global Emissions (Rainbow)").mark_r
 
 st.altair_chart(hm1, use_container_width = True)
 
-#Heatmap - monochrome
+#Heatmap - blackbody/inferno
 heatmapP2 = heatmapP1
 
-hm2 = alt.Chart(heatmapP2, title="Heatmap of Global Emissions (Monochrome)").mark_rect().encode(
+hm2 = alt.Chart(heatmapP2, title="Heatmap of Global Emissions (Blackbody/Inferno)").mark_rect().encode(
     x=alt.X('Country/Region:N', title = 'Country'),
     y=alt.Y('Year:O', title = 'Year'),
-    color=alt.Color('Emissions:Q', scale=alt.Scale(scheme="greys")),
+    color=alt.Color('Emissions:Q', scale=alt.Scale(scheme="inferno")),
     tooltip=["Country/Region", "Year", "Emissions"]
 ).interactive()
 
 st.altair_chart(hm2, use_container_width = True)
 
 st.subheader("Heatmap Comparisons")
-st.markdown("The colorful heatmap is not as useful as the monochrome one.")
-st.markdown("The colorful heatmap is just an array of hues, given some non-intuitive order.")
-st.markdown("This makes it difficult for the viewer to discern the true differences between the different colors on the heatmap.")
-st.markdown("Furthermore, there is no reason to have as many hues in this heatmap as is offered by the rainbow colormap.")
-st.markdown("After all, there are very few structures in the data that need to be emphasized (emissions).")
-st.markdown("In comparison, the monochrome is a changing of luminance.")
-st.markdown("The changes in luminance are more intuitive to the viewer.")
+st.markdown("The rainbow heatmap is not as useful as the blackbody/inferno one.")
+st.markdown("The rainbow heatmap is just an array of hues, given some arbitrary (non-intuitive) order.")
+st.markdown("This makes it difficult for the viewer to discern the true differences in values based solely on color in the heatmap.")
+st.markdown("Furthermore, there is no reason to have as many hues as offered by the rainbow color scheme in this heatmap.")
+st.markdown("After all, there are very few structures in the data that need to be emphasized (emission levels).")
+st.markdown("In comparison, the blackbody/inferno has fewer hues that exemplify changes in both saturation and luminence.")
+st.markdown("These changes are more intuitive to the viewer, as there is some intuitive, non-arbitrary order to the colors because of this fact.")
+st.markdown("It also utilizes fewer hues compared to the rainbow, which better matches the number of structures being emphasized in the heatmap.")
 st.markdown("Additionally, it is known that ordered colormaps, such as the one used in heatmaps, are more effective when they vary in saturation or luminance.")
-st.markdown("Thus, the rainbow colormap is less effective than the monochrome one.")
+st.markdown("Thus, the rainbow colormap is less effective than the blackbody/inferno one.")
 
 
 
@@ -155,7 +156,6 @@ countries = df_data['Country/Region']
 source = pd.melt(source, id_vars=["Country/Region", "Non-OECD Economies"], var_name="Year", value_vars=["1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019"], value_name="Emissions")
 source['Emissions'] = source['Emissions'].apply(pd.to_numeric, errors='coerce')
 
-
 #HEATMAPS
 st.subheader("Heatmap Overview")
 
@@ -178,28 +178,29 @@ hm1 = alt.Chart(heatmapP1, title="Heatmap of Global Emissions (Rainbow)").mark_r
 
 st.altair_chart(hm1, use_container_width = True)
 
-#Heatmap - monochrome
+#Heatmap - blackbody/inferno
 heatmapP2 = heatmapP1
 
-hm2 = alt.Chart(heatmapP2, title="Heatmap of Global Emissions (Monochrome)").mark_rect().encode(
+hm2 = alt.Chart(heatmapP2, title="Heatmap of Global Emissions (Blackbody/Inferno)").mark_rect().encode(
     x=alt.X('Country/Region:N', title = 'Country'),
     y=alt.Y('Year:O', title = 'Year'),
-    color=alt.Color('Emissions:Q', scale=alt.Scale(scheme="greys")),
+    color=alt.Color('Emissions:Q', scale=alt.Scale(scheme="inferno")),
     tooltip=["Country/Region", "Year", "Emissions"]
 ).interactive()
 
 st.altair_chart(hm2, use_container_width = True)
 
 st.subheader("Heatmap Comparisons")
-st.markdown("The colorful heatmap is not as useful as the monochrome one.")
-st.markdown("The colorful heatmap is just an array of hues, given some non-intuitive order.")
-st.markdown("This makes it difficult for the viewer to discern the true differences between the different colors on the heatmap.")
-st.markdown("Furthermore, there is no reason to have as many hues in this heatmap as is offered by the rainbow colormap.")
-st.markdown("After all, there are very few structures in the data that need to be emphasized (emissions).")
-st.markdown("In comparison, the monochrome is a changing of luminance.")
-st.markdown("The changes in luminance are more intuitive to the viewer.")
+st.markdown("The rainbow heatmap is not as useful as the blackbody/inferno one.")
+st.markdown("The rainbow heatmap is just an array of hues, given some arbitrary (non-intuitive) order.")
+st.markdown("This makes it difficult for the viewer to discern the true differences in values based solely on color in the heatmap.")
+st.markdown("Furthermore, there is no reason to have as many hues as offered by the rainbow color scheme in this heatmap.")
+st.markdown("After all, there are very few structures in the data that need to be emphasized (emission levels).")
+st.markdown("In comparison, the blackbody/inferno has fewer hues that exemplify changes in both saturation and luminence.")
+st.markdown("These changes are more intuitive to the viewer, as there is some intuitive, non-arbitrary order to the colors because of this fact.")
+st.markdown("It also utilizes fewer hues compared to the rainbow, which better matches the number of structures being emphasized in the heatmap.")
 st.markdown("Additionally, it is known that ordered colormaps, such as the one used in heatmaps, are more effective when they vary in saturation or luminance.")
-st.markdown("Thus, the rainbow colormap is less effective than the monochrome one.")
+st.markdown("Thus, the rainbow colormap is less effective than the blackbody/inferno one.")
 
 
 
@@ -248,5 +249,6 @@ st.markdown("The second visual's stacking makes it difficult to discern the true
 st.markdown("Were a large-emitting country be shown alongside a low-emitting country, the low-emitting country would barely be seen on the plot, making it seem it produced no emissions that year.")
 st.markdown("The first visual more accurately shows the magnitude of emissions each country contributed to each year.")
 st.markdown("You can also easily compare how much each country's emissions have changed from year to year with both itself and to other nations.")
-st.markdown("The second plot makes this comparison difficult, if not impossible to do due to the nature of the stacking.")'''
+st.markdown("The second plot makes this comparison difficult, if not impossible to do due to the nature of the stacking.")
+'''
 st.code(code, language='python')
